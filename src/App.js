@@ -12,7 +12,7 @@ import Signup from "./pages/Signup/Signup";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App max-w-screen-xl mx-auto">
       <Header></Header>
 
       <Routes>

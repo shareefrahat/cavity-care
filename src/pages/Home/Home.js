@@ -1,6 +1,7 @@
 import React from "react";
 import Appointment from "../../components/Appointment/Appointment";
 import Banner from "../../components/Banner/Banner";
+import ContactForm from "../../components/ContactForm/ContactForm";
 import Feature from "../../components/Feature/Feature";
 import Info from "../../components/Info/Info";
 import Service from "../../components/Service/Service";
@@ -28,7 +29,9 @@ const Home = () => {
         <section className="max-w-screen-xl mx-auto">
           <Testimonial></Testimonial>
         </section>
-        <section></section>
+        <section>
+          <ContactForm></ContactForm>
+        </section>
       </div>
     </>
   );

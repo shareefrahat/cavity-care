@@ -1,5 +1,6 @@
 import React from "react";
-import Appointment from "../../components/Appointment/Appointment";
+import AppointmentFeature from "../../components/AppointmentFeature/AppointmentFeature";
+
 import Banner from "../../components/Banner/Banner";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import Feature from "../../components/Feature/Feature";
@@ -24,7 +25,7 @@ const Home = () => {
           <Feature></Feature>
         </section>
         <section>
-          <Appointment></Appointment>
+          <AppointmentFeature></AppointmentFeature>
         </section>
         <section className="max-w-screen-xl px-10 lg:px-0 mx-auto">
           <Testimonial></Testimonial>

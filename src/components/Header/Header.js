@@ -30,8 +30,8 @@ const Header = () => {
   );
   return (
     <>
-      <div className="navbar bg-base-100 flex flex-row justify-between max-w-screen-xl mx-auto">
-        <div className="navbar-start flex flex-row justify-between  items-center lg:justify-start ">
+      <div className="navbar bg-base-100 flex flex-row  justify-between max-w-screen-xl mx-auto">
+        <div className="flex flex-row-reverse justify-between">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">
               <svg

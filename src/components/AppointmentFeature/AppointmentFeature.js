@@ -2,7 +2,7 @@ import React from "react";
 import doctor from "../../images/doctor-small.png";
 import appointment from "../../images/appointment.png";
 
-const Appointment = () => {
+const AppointmentFeature = () => {
   return (
     <div className=" min-h-screen mt-40">
       <div
@@ -40,4 +40,4 @@ const Appointment = () => {
   );
 };
 
-export default Appointment;
+export default AppointmentFeature;

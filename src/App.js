@@ -9,6 +9,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Reviews from "./pages/Reviews/Reviews";
 import Signup from "./pages/Signup/Signup";
+import "react-day-picker/dist/style.css";
 
 function App() {
   return (

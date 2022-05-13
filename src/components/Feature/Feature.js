@@ -8,11 +8,11 @@ const Feature = () => {
         <div>
           <img
             src={treatment}
-            className="rounded-lg shadow-2xl w-[230px] lg:w-[460px] mx-auto "
+            className="rounded w-full px-10 lg:w-[460px] mx-auto"
             alt=""
           />
         </div>
-        <div className="flex flex-col lg:items-start text-left lg:w-[600px] px-20">
+        <div className="flex flex-col lg:items-start text-left w-full lg:w-[600px] px-10">
           <h1 className="text-5xl font-bold">
             Exceptional Dental Care, on Your Terms
           </h1>

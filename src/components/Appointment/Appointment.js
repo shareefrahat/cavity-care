@@ -4,7 +4,7 @@ import appointment from "../../images/appointment.png";
 
 const Appointment = () => {
   return (
-    <div className=" min-h-screen my-40">
+    <div className=" min-h-screen mt-40">
       <div
         style={{ backgroundImage: `url(${appointment})` }}
         className="flex flex-col lg:flex-row justify-center items-center bg-no-repeat bg-cover h-[475px]"

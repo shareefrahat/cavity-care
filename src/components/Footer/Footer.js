@@ -8,7 +8,7 @@ const Footer = () => {
       <footer
         style={{ backgroundImage: `url(${bgFooter})` }}
         className="
-      text-neutral bg-no-repeat bg-cover bg-center mx-auto"
+      text-neutral bg-no-repeat bg-cover bg-center mx-auto mt-40"
       >
         <div className="footer flex-col lg:flex-row justify-center lg:justify-around my-5">
           <div>

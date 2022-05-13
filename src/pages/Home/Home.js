@@ -14,10 +14,10 @@ const Home = () => {
         <section>
           <Banner></Banner>
         </section>
-        <section className="max-w-screen-xl mx-auto">
+        <section className="max-w-screen-xl px-10 lg:px-0 mx-auto">
           <Info></Info>
         </section>
-        <section className="max-w-screen-xl mx-auto">
+        <section className="max-w-screen-xl px-10 lg:px-0 mx-auto">
           <Service></Service>
         </section>
         <section className="max-w-screen-xl mx-auto">
@@ -26,7 +26,7 @@ const Home = () => {
         <section>
           <Appointment></Appointment>
         </section>
-        <section className="max-w-screen-xl mx-auto">
+        <section className="max-w-screen-xl px-10 lg:px-0 mx-auto">
           <Testimonial></Testimonial>
         </section>
         <section>

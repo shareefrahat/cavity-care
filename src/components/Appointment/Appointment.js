@@ -4,10 +4,10 @@ import appointment from "../../images/appointment.png";
 
 const Appointment = () => {
   return (
-    <div className="hero min-h-screen ">
+    <div className=" min-h-screen my-40">
       <div
         style={{ backgroundImage: `url(${appointment})` }}
-        className="hero-content flex-col lg:flex-row items-center bg-no-repeat bg-cover h-[475px] w-full"
+        className="flex flex-col lg:flex-row justify-center items-center bg-no-repeat bg-cover h-[475px]"
       >
         <div>
           <img
@@ -16,7 +16,7 @@ const Appointment = () => {
             alt=""
           />
         </div>
-        <div className="flex flex-col lg:items-start text-left items-center lg:w-[600px] px-10 ">
+        <div className="flex flex-col lg:items-start text-left items-center lg:w-[600px] p-10">
           <h1 className="text-primary text-2xl my-4 font-semibold">
             Appointment
           </h1>

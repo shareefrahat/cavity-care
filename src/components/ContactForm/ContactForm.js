@@ -7,7 +7,7 @@ const ContactForm = () => {
       style={{
         background: `url(${appointment})`,
       }}
-      className="bg-primary px-10 py-14 "
+      className="bg-primary px-10 py-14 mb-20"
     >
       <div className="text-center pb-14 text-white">
         <p className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-accent to-secondary">

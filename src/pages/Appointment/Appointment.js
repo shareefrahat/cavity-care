@@ -9,7 +9,7 @@ const Appointment = () => {
       <section>
         <AppointmentBanner date={date} setDate={setDate}></AppointmentBanner>
       </section>
-      <section>
+      <section className="max-w-screen-xl px-10 lg:px-0 mx-auto">
         <AvailableCard date={date}></AvailableCard>
       </section>
     </>

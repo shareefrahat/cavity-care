@@ -4,6 +4,7 @@ import Banner from "../../components/Banner/Banner";
 import Feature from "../../components/Feature/Feature";
 import Info from "../../components/Info/Info";
 import Service from "../../components/Service/Service";
+import Testimonial from "../../components/Testimonial/Testimonial";
 
 const Home = () => {
   return (
@@ -24,6 +25,10 @@ const Home = () => {
         <section>
           <Appointment></Appointment>
         </section>
+        <section className="max-w-screen-xl mx-auto">
+          <Testimonial></Testimonial>
+        </section>
+        <section></section>
       </div>
     </>
   );

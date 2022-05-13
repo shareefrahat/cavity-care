@@ -1,4 +1,5 @@
 import React from "react";
+import Appointment from "../../components/Appointment/Appointment";
 import Banner from "../../components/Banner/Banner";
 import Feature from "../../components/Feature/Feature";
 import Info from "../../components/Info/Info";
@@ -11,14 +12,17 @@ const Home = () => {
         <section>
           <Banner></Banner>
         </section>
-        <section>
+        <section className="max-w-screen-xl mx-auto">
           <Info></Info>
         </section>
-        <section>
+        <section className="max-w-screen-xl mx-auto">
           <Service></Service>
         </section>
-        <section>
+        <section className="max-w-screen-xl mx-auto">
           <Feature></Feature>
+        </section>
+        <section>
+          <Appointment></Appointment>
         </section>
       </div>
     </>

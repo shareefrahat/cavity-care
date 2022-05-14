@@ -13,6 +13,7 @@ import "react-day-picker/dist/style.css";
 import PrivateRoute from "./pages/PrivateRoute/PrivateRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -38,6 +39,14 @@ function App() {
           element={
             <PrivateRoute>
               <Appointment></Appointment>
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard></Dashboard>
             </PrivateRoute>
           }
         ></Route>

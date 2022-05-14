@@ -10,6 +10,7 @@ import Login from "./pages/Login/Login";
 import Reviews from "./pages/Reviews/Reviews";
 import Signup from "./pages/Signup/Signup";
 import "react-day-picker/dist/style.css";
+import PrivateRoute from "./pages/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -21,7 +22,11 @@ function App() {
         <Route path="/home" element={<Home></Home>}></Route>
         <Route
           path="/appointment"
-          element={<Appointment></Appointment>}
+          element={
+            <PrivateRoute>
+              <Appointment></Appointment>
+            </PrivateRoute>
+          }
         ></Route>
         <Route path="/reviews" element={<Reviews></Reviews>}></Route>
         <Route path="/contact" element={<Contact></Contact>}></Route>

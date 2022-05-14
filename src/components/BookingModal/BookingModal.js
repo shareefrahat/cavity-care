@@ -12,10 +12,9 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
   const handleBooking = (event) => {
     event.preventDefault();
     const slot = event.target.slot.value;
-    console.log(_id, name, slot);
 
     const booking = {
-      treatmentId: treatment._id,
+      treatmentId: _id,
       treatment: name,
       date: formattedDate,
       slot,
@@ -32,15 +31,15 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("Your appointment is booked", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        if (data.success) {
+          toast.success(
+            `Your appointment is booked for ${formattedDate} at ${slot}`
+          );
+        } else {
+          toast.error(
+            `This appointment already exists for ${data.booking?.date} at ${data.booking?.slot}`
+          );
+        }
         // to close the modal
         setTreatment(null);
       });

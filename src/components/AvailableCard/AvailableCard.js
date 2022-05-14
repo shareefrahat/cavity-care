@@ -24,7 +24,6 @@ const AvailableCard = ({ date }) => {
       </div>
       {treatment && (
         <BookingModal
-          key={services._id}
           date={date}
           treatment={treatment}
           setTreatment={setTreatment}

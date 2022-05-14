@@ -2,6 +2,7 @@ import React from "react";
 import { format } from "date-fns";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
+import { toast } from "react-toastify";
 
 const BookingModal = ({ date, treatment, setTreatment }) => {
   const [user] = useAuthState(auth);
@@ -22,7 +23,7 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
       patientName: user.displayName,
       phone: event.target.phone.value,
     };
-    fetch("http://localhost:5000/", {
+    fetch("http://localhost:5000/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -31,6 +32,15 @@ const BookingModal = ({ date, treatment, setTreatment }) => {
     })
       .then((res) => res.json())
       .then((data) => {
+        toast.success("Your appointment is booked", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
         // to close the modal
         setTreatment(null);
       });

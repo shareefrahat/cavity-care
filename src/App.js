@@ -11,10 +11,23 @@ import Reviews from "./pages/Reviews/Reviews";
 import Signup from "./pages/Signup/Signup";
 import "react-day-picker/dist/style.css";
 import PrivateRoute from "./pages/PrivateRoute/PrivateRoute";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Header></Header>
 
       <Routes>

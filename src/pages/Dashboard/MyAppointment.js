@@ -15,7 +15,6 @@ const MyAppointment = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
-  let serial = 1;
   return (
     <>
       {" "}
@@ -35,9 +34,9 @@ const MyAppointment = () => {
               </tr>
             </thead>
             <tbody>
-              {appointments?.map((appointment) => (
+              {appointments?.map((appointment, index) => (
                 <tr key={appointment._id}>
-                  <th>{serial++}</th>
+                  <th>{index + 1}</th>
                   <td>{appointment.treatment}</td>
                   <td>{appointment.date}</td>
                   <td>{appointment.slot}</td>

@@ -7,9 +7,11 @@ import auth from "../../firebase.init";
 const MyAppointment = () => {
   const [user] = useAuthState(auth);
   const { data: appointments, isLoading } = useQuery("appointment", () =>
-    fetch(`http://localhost:5000/bookings?patient=${user?.email}`).then((res) =>
-      res.json()
-    )
+    fetch(`http://localhost:5000/bookings?patient=${user?.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
 
   if (isLoading) {

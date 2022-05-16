@@ -1,9 +1,14 @@
 import React from "react";
 import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 import Loading from "../../components/Loading/Loading";
 
 const AllUsers = () => {
-  const { data: users, isLoading } = useQuery("users", () =>
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useQuery("users", () =>
     fetch(`http://localhost:5000/allUsers`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -14,6 +19,22 @@ const AllUsers = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
+
+  const makeAdmin = (email) => {
+    fetch(`http://localhost:5000/user/admin/${email}`, {
+      method: "PUT",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          refetch();
+          toast.success(`Successfully made an admin`);
+        }
+      });
+  };
   return (
     <>
       <section>
@@ -27,18 +48,36 @@ const AllUsers = () => {
                 <th></th>
                 <th>Name</th>
                 <th>email</th>
-                <th>Todo</th>
+                <th>Role</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {users?.map((user, index) => (
-                <tr key={user._id}>
-                  <th>{index + 1}</th>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>Todo</td>
-                </tr>
-              ))}
+              {users &&
+                users?.map((user, index) => (
+                  <tr key={user._id}>
+                    <th>{index + 1}</th>
+                    <td>Name</td>
+                    <td>{user.email}</td>
+                    <td>
+                      {user.role ? (
+                        <span className="font-semibold uppercase">
+                          {user.role}
+                        </span>
+                      ) : (
+                        <button
+                          onClick={() => makeAdmin(user.email)}
+                          className="btn btn-xs"
+                        >
+                          Make Admin
+                        </button>
+                      )}
+                    </td>
+                    <td>
+                      <button className="btn bg-red-600 btn-xs">Remove</button>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>

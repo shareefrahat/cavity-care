@@ -1,6 +1,17 @@
 import React from "react";
+import { useQuery } from "react-query";
+import Loading from "../../components/Loading/Loading";
 
 const AddDoctor = () => {
+  const { data: services, isLoading } = useQuery("services", () =>
+    fetch(`https://cavity-care.herokuapp.com/services`).then((res) =>
+      res.json()
+    )
+  );
+
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   return (
     <>
       <section>
@@ -36,16 +47,19 @@ const AddDoctor = () => {
             <label htmlFor="specialty" className="my-2 block">
               <span className="label-text">Specialty:</span>
             </label>
-            <input
-              type="text"
+            <select
               id="specialty"
-              placeholder="Doctors's Specialty"
-              className="input input-bordered w-full max-w-xs"
-              required
-            />
+              class="select select-bordered w-full max-w-xs"
+            >
+              {services.map((service) => (
+                <>
+                  <option key={service._id}>{service.name}</option>
+                </>
+              ))}
+            </select>
           </div>
-          <div className="mb-4">
-            <button className="btn btn-primary">Add Now</button>
+          <div className="my-5">
+            <button className="btn btn-primary w-full">Add Now</button>
           </div>
         </form>
       </section>

@@ -58,6 +58,18 @@ const AddDoctor = () => {
               ))}
             </select>
           </div>
+          <div className="mb-4">
+            <label htmlFor="image" className="my-2 block">
+              <span className="label-text">Image:</span>
+            </label>
+            <input
+              type="file"
+              id="image"
+              placeholder="Doctor's image"
+              className="input input-bordered w-full max-w-xs"
+              required
+            />
+          </div>
           <div className="my-5">
             <button className="btn btn-primary w-full">Add Now</button>
           </div>

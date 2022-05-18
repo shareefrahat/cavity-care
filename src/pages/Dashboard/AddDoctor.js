@@ -1,78 +1,149 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 import Loading from "../../components/Loading/Loading";
 
 const AddDoctor = () => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
+
   const { data: services, isLoading } = useQuery("services", () =>
     fetch(`https://cavity-care.herokuapp.com/services`).then((res) =>
       res.json()
     )
   );
 
+  const imageStorageKey = "1874322e1ad978506bcc7661f14ec59c";
+
+  const onSubmit = async (data) => {
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
+  };
+
   if (isLoading) {
     return <Loading></Loading>;
   }
+
   return (
     <>
       <section>
         <h4 className="my-10 text-xl">Add a new doctor</h4>
       </section>
       <section>
-        <form className="form-control w-full max-w-xs mx-auto text-left">
-          <div className="mb-4">
-            <label htmlFor="name" className="my-2 block">
-              <span className="label-text">Name:</span>
+        <form onSubmit={handleSubmit(onSubmit)} className="w-fit mx-auto">
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              <span className="label-text">Name</span>
             </label>
             <input
               type="text"
-              id="name"
-              placeholder="Doctors's Name"
+              placeholder="Your Name"
               className="input input-bordered w-full max-w-xs"
-              required
+              {...register("name", {
+                required: {
+                  value: true,
+                  message: "Name is Required",
+                },
+              })}
             />
+            <label className="label">
+              {errors.name?.type === "required" && (
+                <span className="label-text-alt text-red-500">
+                  {errors.name.message}
+                </span>
+              )}
+            </label>
           </div>
-          <div className="mb-4">
-            <label htmlFor="email" className="my-2 block">
-              <span className="label-text">Email:</span>
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              <span className="label-text">Email</span>
             </label>
             <input
               type="email"
-              id="email"
-              placeholder="Doctors's Email"
+              placeholder="Your Email"
               className="input input-bordered w-full max-w-xs"
-              required
+              {...register("email", {
+                required: {
+                  value: true,
+                  message: "Email is Required",
+                },
+                pattern: {
+                  value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                  message: "Provide a valid Email",
+                },
+              })}
             />
+            <label className="label">
+              {errors.email?.type === "required" && (
+                <span className="label-text-alt text-red-500">
+                  {errors.email.message}
+                </span>
+              )}
+              {errors.email?.type === "pattern" && (
+                <span className="label-text-alt text-red-500">
+                  {errors.email.message}
+                </span>
+              )}
+            </label>
           </div>
-          <div className="mb-4">
-            <label htmlFor="specialty" className="my-2 block">
-              <span className="label-text">Specialty:</span>
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              <span className="label-text">Specialty</span>
             </label>
             <select
-              id="specialty"
-              class="select select-bordered w-full max-w-xs"
+              {...register("specialty")}
+              class="select input-bordered w-full max-w-xs"
             >
               {services.map((service) => (
-                <>
-                  <option key={service._id}>{service.name}</option>
-                </>
+                <option key={service._id} value={service.name}>
+                  {service.name}
+                </option>
               ))}
             </select>
           </div>
-          <div className="mb-4">
-            <label htmlFor="image" className="my-2 block">
-              <span className="label-text">Image:</span>
+          <div className="form-control w-full max-w-xs">
+            <label className="label">
+              <span className="label-text">Photo</span>
             </label>
             <input
               type="file"
-              id="image"
-              placeholder="Doctor's image"
               className="input input-bordered w-full max-w-xs"
-              required
+              {...register("image", {
+                required: {
+                  value: true,
+                  message: "Image is Required",
+                },
+              })}
             />
+            <label className="label">
+              {errors.name?.type === "required" && (
+                <span className="label-text-alt text-red-500">
+                  {errors.name.message}
+                </span>
+              )}
+            </label>
           </div>
-          <div className="my-5">
-            <button className="btn btn-primary w-full">Add Now</button>
-          </div>
+          <button
+            className="btn block w-full max-w-xs text-white"
+            type="submit"
+          >
+            Add
+          </button>
         </form>
       </section>
     </>

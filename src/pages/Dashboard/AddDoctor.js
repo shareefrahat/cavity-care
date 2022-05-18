@@ -40,7 +40,7 @@ const AddDoctor = () => {
             img: img,
           };
           // send to your database
-          fetch("https://cavity-care.herokuapp.com/doctor", {
+          fetch("https://cavity-care.herokuapp.com/doctors", {
             method: "POST",
             headers: {
               "content-type": "application/json",

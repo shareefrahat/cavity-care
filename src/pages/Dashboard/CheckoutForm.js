@@ -5,9 +5,11 @@ import { toast } from "react-toastify";
 const CheckoutForm = ({ appointment }) => {
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
+  const [transactionId, setTransactionId] = useState("");
+
   const stripe = useStripe();
   const elements = useElements();
-  const { price } = appointment;
+  const { price, patientName, patient } = appointment;
 
   useEffect(() => {
     fetch("http://localhost:5000/create-payment-intent", {
@@ -58,10 +60,38 @@ const CheckoutForm = ({ appointment }) => {
       console.log("[PaymentMethod]", paymentMethod);
       setCardError("");
     }
+
+    const { paymentIntent, error: intentError } =
+      await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: card,
+          billing_details: {
+            name: patientName,
+            email: patient,
+          },
+        },
+      });
+    if (intentError) {
+      setCardError(intentError?.message);
+      toast.error(intentError?.message);
+    } else {
+      setTransactionId(paymentIntent?.id);
+      console.log(paymentIntent);
+      setCardError("");
+      toast.success("Congrates, Payment Successful!");
+    }
   };
 
   return (
     <div>
+      {transactionId && (
+        <p className="font-font text-xl my-5">
+          Your Transaction ID:{" "}
+          <span className="text-green-700">
+            {transactionId || "Not Available"}
+          </span>
+        </p>
+      )}
       {cardError && <p className="text-red-700 my-5">{cardError}</p>}
       <form onSubmit={handleSubmit}>
         <CardElement

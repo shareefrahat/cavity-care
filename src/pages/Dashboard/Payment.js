@@ -46,11 +46,11 @@ const Payment = () => {
         </div>
       </section>
       <section>
-        <div className="p-5 border border-primary shadow-lg w-full mx-auto text-xl rounded text-left my-10">
-          <div>Payment Gateway</div>
+        <div className="p-5 border border-primary shadow-lg w-full lg:w-1/2 mx-auto text-xl rounded text-left my-10">
+          <div className="mb-5">Payment Gateway</div>
           <div>
             <Elements stripe={stripePromise}>
-              <CheckoutForm />
+              <CheckoutForm appointment={appointment} />
             </Elements>
           </div>
         </div>

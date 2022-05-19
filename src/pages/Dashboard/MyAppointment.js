@@ -2,7 +2,7 @@ import { signOut } from "firebase/auth";
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading/Loading";
 import auth from "../../firebase.init";
 
@@ -11,7 +11,7 @@ const MyAppointment = () => {
   const navigate = useNavigate();
 
   const { data: appointments, isLoading } = useQuery("appointment", () =>
-    fetch(`https://cavity-care.herokuapp.com/bookings?patient=${user?.email}`, {
+    fetch(`http://localhost:5000/bookings?patient=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -47,18 +47,34 @@ const MyAppointment = () => {
                 <tr>
                   <th></th>
                   <th>Appointment Name</th>
+                  <th>Price</th>
                   <th>Date</th>
                   <th>Time</th>
+                  <th>Payment</th>
                 </tr>
               </thead>
               <tbody>
-                {appointments?.map((appointment, index) => (
-                  <tr key={appointment._id}>
-                    <th>{index + 1}</th>
-                    <td>{appointment.treatment}</td>
-                    <td>{appointment.date}</td>
-                    <td>{appointment.slot}</td>
-                  </tr>
+                {appointments?.map((a, index) => (
+                  <>
+                    <tr key={a._id}>
+                      <th>{index + 1}</th>
+                      <td>{a.treatment}</td>
+                      <td>${a.price}</td>
+                      <td>{a.date}</td>
+                      <td>{a.slot}</td>
+                      <td>
+                        {a.price && !a.paid ? (
+                          <Link to={`/dashboard/payment/${a._id}`}>
+                            <button className="btn btn-xs btn-error">
+                              Pay
+                            </button>
+                          </Link>
+                        ) : (
+                          <span className="btn btn-xs btn-success">Paid</span>
+                        )}
+                      </td>
+                    </tr>
+                  </>
                 ))}
               </tbody>
             </table>

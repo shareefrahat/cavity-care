@@ -13,9 +13,7 @@ const AddDoctor = () => {
   } = useForm();
 
   const { data: services, isLoading } = useQuery("services", () =>
-    fetch(`https://cavity-care.herokuapp.com/services`).then((res) =>
-      res.json()
-    )
+    fetch(`http://localhost:5000/services`).then((res) => res.json())
   );
 
   const imageStorageKey = "1874322e1ad978506bcc7661f14ec59c";
@@ -40,7 +38,7 @@ const AddDoctor = () => {
             img: img,
           };
           // send to your database
-          fetch("https://cavity-care.herokuapp.com/doctors", {
+          fetch("http://localhost:5000/doctors", {
             method: "POST",
             headers: {
               "content-type": "application/json",

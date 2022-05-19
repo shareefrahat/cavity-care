@@ -7,7 +7,7 @@ const useServices = () => {
   const formattedDate = format(date, "PP");
 
   useEffect(() => {
-    fetch(`https://cavity-care.herokuapp.com/available?${formattedDate}`)
+    fetch(`http://localhost:5000/available?${formattedDate}`)
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, [formattedDate]);

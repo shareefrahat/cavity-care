@@ -1,18 +1,20 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import Loading from "../../components/Loading/Loading";
 
 const CheckoutForm = ({ appointment }) => {
   const [cardError, setCardError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
   const [transactionId, setTransactionId] = useState("");
+  const [processing, setProcessing] = useState(false);
 
   const stripe = useStripe();
   const elements = useElements();
-  const { price, patientName, patient } = appointment;
+  const { _id, price, patientName, patient } = appointment;
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://cavity-care.herokuapp.com/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -27,6 +29,10 @@ const CheckoutForm = ({ appointment }) => {
         }
       });
   }, [price]);
+
+  if (processing) {
+    return <Loading></Loading>;
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -75,10 +81,30 @@ const CheckoutForm = ({ appointment }) => {
       setCardError(intentError?.message);
       toast.error(intentError?.message);
     } else {
+      setProcessing(true);
+
       setTransactionId(paymentIntent?.id);
       console.log(paymentIntent);
       setCardError("");
       toast.success("Congrates, Payment Successful!");
+
+      const payment = {
+        appointment: _id,
+        transactionId: paymentIntent.id,
+      };
+      const url = `https://cavity-care.herokuapp.com/bookings/${_id}`;
+      fetch(url, {
+        method: "PATCH",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(payment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setProcessing(false);
+          console.log(data);
+        });
     }
   };
 

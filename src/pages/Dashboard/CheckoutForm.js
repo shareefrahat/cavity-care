@@ -14,7 +14,7 @@ const CheckoutForm = ({ appointment }) => {
   const { _id, price, patientName, patient } = appointment;
 
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://cavity-care.herokuapp.com/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -94,7 +94,7 @@ const CheckoutForm = ({ appointment }) => {
 
       console.log(payment);
 
-      const url = `http://localhost:5000/bookings/${_id}`;
+      const url = `https://cavity-care.herokuapp.com/bookings/${_id}`;
       fetch(url, {
         method: "PATCH",
         headers: {

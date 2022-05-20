@@ -11,7 +11,7 @@ const MyAppointment = () => {
   const navigate = useNavigate();
 
   const { data: appointments, isLoading } = useQuery("appointment", () =>
-    fetch(`http://localhost:5000/bookings?patient=${user?.email}`, {
+    fetch(`https://cavity-care.herokuapp.com/bookings?patient=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },

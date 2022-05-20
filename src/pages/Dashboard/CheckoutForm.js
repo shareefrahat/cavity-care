@@ -14,7 +14,7 @@ const CheckoutForm = ({ appointment }) => {
   const { _id, price, patientName, patient } = appointment;
 
   useEffect(() => {
-    fetch("https://cavity-care.herokuapp.com/create-payment-intent", {
+    fetch("http://localhost:5000/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -82,7 +82,6 @@ const CheckoutForm = ({ appointment }) => {
       toast.error(intentError?.message);
     } else {
       setProcessing(true);
-
       setTransactionId(paymentIntent?.id);
       console.log(paymentIntent);
       setCardError("");
@@ -90,12 +89,16 @@ const CheckoutForm = ({ appointment }) => {
 
       const payment = {
         appointment: _id,
-        transactionId: paymentIntent.id,
+        transactionId: paymentIntent?.id,
       };
-      const url = `https://cavity-care.herokuapp.com/bookings/${_id}`;
+
+      console.log(payment);
+
+      const url = `http://localhost:5000/bookings/${_id}`;
       fetch(url, {
         method: "PATCH",
         headers: {
+          "content-type": "application/json",
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
         body: JSON.stringify(payment),
@@ -104,6 +107,7 @@ const CheckoutForm = ({ appointment }) => {
         .then((data) => {
           setProcessing(false);
           console.log(data);
+          console.log(payment);
         });
     }
   };

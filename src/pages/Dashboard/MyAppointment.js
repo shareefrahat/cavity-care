@@ -11,7 +11,7 @@ const MyAppointment = () => {
   const navigate = useNavigate();
 
   const { data: appointments, isLoading } = useQuery("appointment", () =>
-    fetch(`https://cavity-care.herokuapp.com/bookings?patient=${user?.email}`, {
+    fetch(`http://localhost:5000/bookings?patient=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -28,6 +28,8 @@ const MyAppointment = () => {
   if (isLoading) {
     return <Loading></Loading>;
   }
+
+  console.log(appointments);
   return (
     <>
       {" "}
@@ -51,6 +53,7 @@ const MyAppointment = () => {
                   <th>Date</th>
                   <th>Time</th>
                   <th>Payment</th>
+                  <th>Transaction ID</th>
                 </tr>
               </thead>
               <tbody>
@@ -70,9 +73,12 @@ const MyAppointment = () => {
                             </button>
                           </Link>
                         ) : (
-                          <span className="btn btn-xs btn-success">Paid</span>
+                          <p>
+                            <span className="btn btn-xs btn-success">Paid</span>
+                          </p>
                         )}
                       </td>
+                      <td>{a.transactionId || "N/A"}</td>
                     </tr>
                   </>
                 ))}

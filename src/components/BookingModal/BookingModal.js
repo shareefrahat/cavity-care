@@ -23,7 +23,7 @@ const BookingModal = ({ date, treatment, setTreatment, refetch }) => {
       patientName: user.displayName,
       phone: event.target.phone.value,
     };
-    fetch("https://cavity-care.herokuapp.com/bookings", {
+    fetch("http://localhost:5000/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

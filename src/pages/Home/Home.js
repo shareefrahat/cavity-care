@@ -11,7 +11,7 @@ import Testimonial from "../../components/Testimonial/Testimonial";
 const Home = () => {
   return (
     <>
-      <div>
+      <div className="overflow-hidden">
         <section>
           <Banner></Banner>
         </section>

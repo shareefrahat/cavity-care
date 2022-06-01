@@ -42,7 +42,7 @@ const Header = () => {
   return (
     <>
       <div className="navbar bg-base-100 flex flex-row  justify-between max-w-screen-xl mx-auto">
-        <div className="flex flex-row-reverse justify-between">
+        <div className="flex flex-row justify-evenly">
           <div className="dropdown">
             <label tabIndex="0" className="btn btn-ghost lg:hidden">
               <svg

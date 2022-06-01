@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Power Wheels Ltd.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <p>SPA for dentist appointment booking which is build with MERN architecture. Secure login authentication system for patient and doctors. Separate dashboard for user and admin. Users booking database. Single and Multiple booking system for user. Admin can add new doctors and save doctors info in database. Modal is used for confirmation message. Payment system with Stripe.</p>
 
-## Available Scripts
+## Important Links
 
-In the project directory, you can run:
+- Live Site Link: https://cavity-care-bd.web.app
 
-### `npm start`
+- Server App Link: https://cavity-care-bd.herokuapp.com
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Client Side Repository Link: https://github.com/shareefrahat/cavity-care-client
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Server Side Repository Link: https://github.com/shareefrahat/cavity-care-server
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Appointment page with data and time based booking system.
+- Dashboard to show all bookings a other user information.
+- A user can't book for a same treatment again in a same time and date schedule.
+- Different dashboard with nested route for users and admin
+- Protected page for admin to manage user and bookings
+- Admin can make user role into admin
+- Payment system developed with stripe
+- Payment shipment and status changing system in dashboard
+- User can cancel his own order which he/she did not pay yet.
+- Profile updating system
+- User Avatar and Logout Toggle System.
+- React Spinner for loading states.
+- Different nav menu for mobile screen.
+- React Toastify to show success and error message.
 
-### `npm run build`
+## Techs Stuff
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React
+- Tailwind
+- DaisyUI
+- SwiperJS
+- React Router
+- React Query
+- Firebase Auth
+- React Firebase hooks
+- Hero Icons
+- Toastify
+- Stripe
+- JSON Web Token

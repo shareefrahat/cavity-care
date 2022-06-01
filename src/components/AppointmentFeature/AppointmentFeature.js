@@ -1,22 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import doctor from "../../images/doctor-small.png";
 import appointment from "../../images/appointment.png";
+import AOS from "aos";
 
 const AppointmentFeature = () => {
+  useEffect(() => {
+    AOS.init({ duration: 3000 });
+    AOS.refresh();
+  }, []);
   return (
     <div className=" min-h-screen mt-40">
       <div
         style={{ backgroundImage: `url(${appointment})` }}
         className="flex flex-col lg:flex-row justify-center items-center bg-no-repeat bg-cover h-[475px]"
       >
-        <div>
+        <div data-aos="fade-right">
           <img
             src={doctor}
             className="rounded-lg hidden lg:block lg:w-[600px] mx-auto mb-24"
             alt=""
           />
         </div>
-        <div className="flex flex-col lg:items-start text-left items-center lg:w-[600px] p-10">
+        <div
+          data-aos="fade-left"
+          className="flex flex-col lg:items-start text-left items-center lg:w-[600px] p-10"
+        >
           <h1 className="text-primary text-2xl my-4 font-semibold">
             Appointment
           </h1>

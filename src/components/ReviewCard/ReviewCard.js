@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
 
 const ReviewCard = ({ review }) => {
+  useEffect(() => {
+    AOS.init({ duration: 3000 });
+    AOS.refresh();
+  }, []);
   return (
-    <div className="card lg:max-w-lg bg-base-100 shadow-xl text-left">
+    <div
+      data-aos="zoom-in-up"
+      className="card lg:max-w-lg bg-base-100 shadow-xl text-left"
+    >
       <div className="card-body">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae,

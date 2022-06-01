@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import treatment from "../../images/treatment.png";
+import AOS from "aos";
 
 const Feature = () => {
+  useEffect(() => {
+    AOS.init({ duration: 3000 });
+    AOS.refresh();
+  }, []);
   return (
     <div className="hero min-h-screen">
       <div className="hero-content flex-col lg:flex-row">
-        <div>
+        <div data-aos="zoom-in-right">
           <img
             src={treatment}
             className="rounded w-full px-10 lg:w-[460px] mx-auto"
             alt=""
           />
         </div>
-        <div className="flex flex-col lg:items-start text-left w-full lg:w-[600px] px-10">
+        <div
+          data-aos="zoom-in-left"
+          className="flex flex-col lg:items-start text-left w-full lg:w-[600px] px-10"
+        >
           <h1 className="text-5xl font-bold">
             Exceptional Dental Care, on Your Terms
           </h1>

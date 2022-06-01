@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import chair from "../../images/chair.png";
+import AOS from "aos";
 
 const Banner = () => {
+  useEffect(() => {
+    AOS.init({ duration: 3000 });
+    AOS.refresh();
+  }, []);
   return (
     <div className="hero min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <div>
+        <div data-aos="fade-left">
           <img
             src={chair}
             className="rounded-lg shadow-2xl w-[375px] lg:w-[600px] mx-auto"
             alt=""
           />
         </div>
-        <div className="flex flex-col lg:items-start text-left w-[375px] lg:w-[600px]">
+        <div
+          data-aos="fade-right"
+          className="flex flex-col lg:items-start text-left w-[375px] lg:w-[600px]"
+        >
           <h1 className="text-5xl font-bold">Your New Smile Starts Here</h1>
           <p className="py-6 ">
             Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda

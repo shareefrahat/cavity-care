@@ -22,6 +22,7 @@ import RequireAdmin from "./components/RequireAdmin/RequireAdmin";
 import AddDoctor from "./pages/Dashboard/AddDoctor";
 import ManageDoctor from "./pages/Dashboard/ManageDoctor";
 import Payment from "./pages/Dashboard/Payment";
+import "aos/dist/aos.css";
 
 function App() {
   return (

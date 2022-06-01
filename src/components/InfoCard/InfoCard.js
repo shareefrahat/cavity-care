@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
 
-const InfoCard = ({ img, cardTitle, bgClass }) => {
+const InfoCard = ({ img, cardTitle, bgClass, aos }) => {
+  useEffect(() => {
+    AOS.init({ duration: 3000 });
+    AOS.refresh();
+  }, []);
   return (
-    <div className={`card lg:card-side bg-base-100 shadow-xl ${bgClass}`}>
+    <div
+      data-aos={aos}
+      className={`card lg:card-side bg-base-100 shadow-xl ${bgClass}`}
+    >
       <figure className="p-5">
         <img src={img} alt="Album" />
       </figure>
